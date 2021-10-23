@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Products</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class="container-fluid text-center">
+    <div>
+        <h2>Manage Products</h2>
+    </div>
+    <div>
+        <a class="btn btn-info m-5" th:href="@{'/products/new'}">Add New Product</a>
+    </div>
+    <div th:if="${message}" class="alert alert-success text-center">
+        [[${message}]]
+    </div>
+    <div>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Product Name</th>
+                <th>Brand</th>
+                <th>Type</th>
+                <th>Available Quantity</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="product: ${listProducts}">
+                <tr>
+                    <td>[[${product.id}]]</td>
+                    <td>[[${product.name}]]</td>
+                    <td>[[${product.brand}]]</td>
+                    <td>[[${product.type}]]</td>
+                    <td>[[${product.availableQuantity}]]</td>
+                    <td><a th:href="@{'/products/edit/'+${product.id}}" class="btn btn-secondary mr-4">edit</a>
+                        <a th:href="@{'/products/delete/'+${product.id}}" class="btn btn-danger">delete</a>
+                    </td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
