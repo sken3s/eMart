@@ -24,6 +24,7 @@ public class ProductRepositoryTest {
         product.setName("iPhone 13 Pro Max");
         product.setBrand("Apple");
         product.setType("Mobile Phone");
+        product.setUnitPrice(10.91);
         product.setAvailableQuantity(15);
 
         Product savedProduct = repo.save(product);

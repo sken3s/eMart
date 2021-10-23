@@ -12,6 +12,7 @@
     </div>
     <div>
         <a class="btn btn-info m-5" th:href="@{'/products/new'}">Add New Product</a>
+        <a class="btn btn-secondary m-5" th:href="@{'/'}">HomePage</a>
     </div>
     <div th:if="${message}" class="alert alert-success text-center">
         [[${message}]]
@@ -24,6 +25,7 @@
                 <th>Product Name</th>
                 <th>Brand</th>
                 <th>Type</th>
+                <th>Unit Price</th>
                 <th>Available Quantity</th>
                 <th></th>
             </tr>
@@ -35,6 +37,7 @@
                     <td>[[${product.name}]]</td>
                     <td>[[${product.brand}]]</td>
                     <td>[[${product.type}]]</td>
+                    <td>[[${product.unitPrice}]]</td>
                     <td>[[${product.availableQuantity}]]</td>
                     <td><a th:href="@{'/products/edit/'+${product.id}}" class="btn btn-secondary mr-4">edit</a>
                         <a th:href="@{'/products/delete/'+${product.id}}" class="btn btn-danger">delete</a>

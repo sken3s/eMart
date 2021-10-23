@@ -16,6 +16,8 @@ public class Product {
     private String type;
     @Column(nullable = false)
     private Integer availableQuantity;
+    @Column(nullable = false)
+    private Double unitPrice;
 
     public Integer getId() {
         return id;
@@ -57,6 +59,14 @@ public class Product {
         this.brand = brand;
     }
 
+    public Double getUnitPrice() {
+        return unitPrice;
+    }
+
+    public void setUnitPrice(Double unitPrice) {
+        this.unitPrice = unitPrice;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
@@ -65,6 +75,7 @@ public class Product {
                 ", brand='" + brand + '\'' +
                 ", type='" + type + '\'' +
                 ", availableQuantity=" + availableQuantity +
+                ", unitPrice='" + unitPrice + '\'' +
                 '}';
     }
 }
