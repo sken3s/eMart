@@ -64,12 +64,12 @@ public class ProductRepositoryTest {
         System.out.println(optionalProduct.get());
     }
 
-    @Test
-    public void testDelete(){
-        Integer productId =3;
-        repo.deleteById(productId);
-
-        Optional<Product> optionalProduct = repo.findById(productId);
-        Assertions.assertThat(optionalProduct).isNotPresent();
-    }
+//    @Test
+//    public void testDelete(){
+//        Integer productId =3;
+//        repo.deleteById(productId);
+//
+//        Optional<Product> optionalProduct = repo.findById(productId);
+//        Assertions.assertThat(optionalProduct).isNotPresent();
+//    }
 }
