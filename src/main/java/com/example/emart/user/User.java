@@ -12,7 +12,7 @@ public class User {
     private String name;
     @Column(nullable = false,unique = true,length = 45)
     private String email;
-    @Column(nullable = false,length = 45)
+    @Column(nullable = false,length = 64)
     private String password;
     @Column
     private Boolean admin;

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>eMart</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class="container-fluid text-center">
+  <h1>Welcome to eMart</h1>
+
+  <div>
+    <form th:action="@{/logout}" method="post">
+      <p>
+        Welcome <b>[[${#request.userPrincipal.principal.usersName}]]</b>
+      </p>
+      <input type="submit" value="Log Out"/>
+    </form>
+  </div>
+
+  <a class="btn btn-info m-5" th:href="@{/register}">Register</a>
+  <a class="btn btn-info m-5" th:href="@{/login}">Login</a>
+  <a class="btn btn-primary m-5" th:href="@{/users}">Manage Users</a>
+  <a class="btn btn-info m-5" th:href="@{/products}">Manage Products</a>
+
+
+
+</div>
+
+</body>
+</html>

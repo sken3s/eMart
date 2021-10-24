@@ -73,4 +73,12 @@ public class UserRepositoryTest {
         Optional<User> optionalUser = repo.findById(userId);
         Assertions.assertThat(optionalUser).isNotPresent();
     }
+
+    @Test
+    public void testFindByEmail(){
+        String email = "dulthar@gmail.com";
+        User user = repo.findByEmail(email);
+        Assertions.assertThat(user).isNotNull();
+
+    }
 }
