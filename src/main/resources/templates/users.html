@@ -6,14 +6,32 @@
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
 </head>
 <body>
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/512x512/plain/badminton_racket.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+            Badminton World
+        </a>
+        <p class="m-2">
+            Welcome <b>[[${#request.userPrincipal.principal.usersName}]]</b>
+        </p>
+        <form th:action="@{/logout}" method="post">
+            <input class="btn btn-info" type="submit" value="Log Out"/>
+        </form>
+    </div>
+</nav>
 <div class="container-fluid text-center">
-    <div>
-        <h2>Manage Users</h2>
+
+    <div class="row m-2">
+        <div class="col-8 mt-2">
+            <h2>Manage Users</h2>
+        </div>
+        <div class="col-4">
+            <a class="btn btn-info m-2" th:href="@{'/users/new'}">Add New User</a>
+            <a class="btn btn-secondary m-2" th:href="@{'/mainpage'}">HomePage</a>
+        </div>
     </div>
-    <div>
-        <a class="btn btn-info m-5" th:href="@{'/users/new'}">Add New User</a>
-        <a class="btn btn-secondary m-5" th:href="@{'/mainpage'}">HomePage</a>
-    </div>
+
     <div th:if="${message}" class="alert alert-success text-center">
         [[${message}]]
     </div>
@@ -46,6 +64,29 @@
         </table>
     </div>
 </div>
+
+<footer class="text-center text-lg-start bg-light text-muted">
+
+    <section
+            class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
+    >
+
+        <div class=" d-none d-lg-block">
+            <span>Get connected with us :</span>
+        </div>
+
+        <div>
+            <p>sales@badmintonworld.com | +94 77 592 8309 | 98, Park Road, Colombo-02</p>
+        </div>
+
+    </section>
+
+    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+        © 2021 Copyright:
+        <a class="text-reset fw-bold" >Skenos Peniel</a>
+    </div>
+
+</footer>
 
 </body>
 </html>

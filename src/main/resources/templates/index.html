@@ -7,13 +7,17 @@
 </head>
 <body>
 <div class="container-fluid text-center">
-    <h1>Login Or Register to continue</h1>
 
-
-    <a class="btn btn-info m-5" th:href="@{/register}">Register</a>
-    <a class="btn btn-info m-5" th:href="@{/login}">Login</a>
-
-
+    <div class="row align-items-md-stretch">
+        <div class="col-md-12">
+            <div class="h-100 p-5 text-white bg-dark rounded-3 mt-5">
+                <h2>Welcome to Badminton World</h2>
+                <p>Please Login or Register to continue</p>
+                <a class="btn btn-outline-light" th:href="@{/register}">Register</a>
+                <a class="btn btn-outline-light" th:href="@{/login}">Login</a>
+            </div>
+        </div>
+    </div>
 
 
 

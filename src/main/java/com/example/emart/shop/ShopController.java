@@ -24,6 +24,7 @@ public class ShopController {
         public String showUserList(Model model){
             List<Product> listProducts = service.listAll();
             model.addAttribute("listProducts",listProducts);
+
             return "shop";
         }
 

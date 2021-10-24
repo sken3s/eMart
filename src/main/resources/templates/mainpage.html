@@ -7,30 +7,86 @@
   <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
 </head>
 <body>
-<div class="container-fluid text-center">
-  <h1>Welcome to eMart</h1>
 
-  <div sec:authorize="isAuthenticated()">
-Welcome <span sec:authentication="name"> Username</span>
-    <span sec:authentication="principal.authorities"> Roles</span>
-  </div>
-  <div>
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/512x512/plain/badminton_racket.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+      Badminton World
+    </a>
+    <p class="m-2">
+      Welcome <b>[[${#request.userPrincipal.principal.usersName}]]</b>
+    </p>
     <form th:action="@{/logout}" method="post">
-      <p>
-        Welcome <b>[[${#request.userPrincipal.principal.usersName}]]</b>
-      </p>
-      <input type="submit" value="Log Out"/>
+      <input class="btn btn-info" type="submit" value="Log Out"/>
     </form>
   </div>
+</nav>
 
+<div class="container-fluid text-center">
 
-  <a sec:authorize="hasAnyAuthority('ADMIN')" class="btn btn-primary m-5" th:href="@{/users}">Manage Users</a>
-  <a sec:authorize="hasAnyAuthority('ADMIN')" class="btn btn-info m-5" th:href="@{/products}">Manage Products</a>
-  <a class="btn btn-secondary m-5" th:href="@{/shop}">Badminton Rackets</a>
+  <div class="row align-items-md-stretch" sec:authorize="hasAnyAuthority('ADMIN')" >
+    <div class="col-md-12">
+      <div class="h-100 p-5 text-white bg-info rounded-3">
+        <h2>Admin Panel</h2>
+        <div sec:authorize="isAuthenticated()">
+          Welcome <span sec:authentication="name"> Username</span>
+          <span sec:authentication="principal.authorities"> Roles</span>
+        </div>
+        <br/>
+        <a sec:authorize="hasAnyAuthority('ADMIN')" class="btn btn-outline-light" th:href="@{/users}">Manage Users</a>
+        <a sec:authorize="hasAnyAuthority('ADMIN')" class="btn btn-outline-light" th:href="@{/products}">Manage Rackets</a>
+        <a sec:authorize="hasAnyAuthority('ADMIN')" class="btn btn-outline-light" th:href="@{/shoes}">Manage Shoes</a>
+      </div>
+    </div>
+  </div>
 
+  <img src="https://wallpapercave.com/wp/wp5254034.jpg" class="d-block w-100" alt="...">
 
+  <div class="card">
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <p>I love winning more than I love playing badminton. Winning is everything.</p>
+        <footer class="blockquote-footer">Saina Nehwal</footer>
+      </blockquote>
+    </div>
+  </div>
+
+  <div class="row align-items-md-stretch">
+    <div class="col-md-12">
+      <div class="h-100 p-5 text-white bg-dark rounded-3">
+        <h2>Welcome to Badminton World</h2>
+        <p>Your one stop shop for all things Badminton</p>
+        <a class="btn btn-outline-light" th:href="@{/shop}">Explore Rackets</a>
+      </div>
+    </div>
+  </div>
 
 </div>
+
+
+<footer class="text-center text-lg-start bg-light text-muted">
+
+  <section
+          class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
+  >
+
+    <div class=" d-none d-lg-block">
+      <span>Get connected with us :</span>
+    </div>
+
+    <div>
+   <p>sales@badmintonworld.com | +94 77 592 8309 | 98, Park Road, Colombo-02</p>
+    </div>
+
+  </section>
+
+  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+    © 2021 Copyright:
+    <a class="text-reset fw-bold" >Skenos Peniel</a>
+  </div>
+
+</footer>
 
 </body>
 </html>

@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Manage Products</title>
+    <title>Manage Shoes</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
 </head>
 <body>
@@ -24,10 +24,10 @@
 
     <div class="row m-2">
         <div class="col-8 mt-2">
-            <h2>Manage Products</h2>
+            <h2>Manage Shoes</h2>
         </div>
         <div class="col-4">
-            <a class="btn btn-info m-2" th:href="@{'/products/new'}">Add New Product</a>
+            <a class="btn btn-info m-2" th:href="@{'/shoes/new'}">Add New Shoe</a>
             <a class="btn btn-secondary m-2" th:href="@{'/mainpage'}">HomePage</a>
         </div>
     </div>
@@ -40,7 +40,7 @@
             <thead class="thead-dark">
             <tr>
                 <th>ID</th>
-                <th>Product Name</th>
+                <th>Shoe Name</th>
                 <th>Brand</th>
                 <th>Type</th>
                 <th>Unit Price</th>
@@ -49,16 +49,17 @@
             </tr>
             </thead>
             <tbody>
-            <th:block th:each="product: ${listProducts}">
+            <th:block th:each="shoe: ${listShoes}">
                 <tr>
-                    <td>[[${product.id}]]</td>
-                    <td>[[${product.name}]]</td>
-                    <td>[[${product.brand}]]</td>
-                    <td>[[${product.type}]]</td>
-                    <td>[[${product.unitPrice}]]</td>
-                    <td>[[${product.availableQuantity}]]</td>
-                    <td><a th:href="@{'/products/edit/'+${product.id}}" class="btn btn-secondary mr-4">edit</a>
-                        <a th:href="@{'/products/delete/'+${product.id}}" class="btn btn-danger">delete</a>
+                    <td>[[${shoe.id}]]</td>
+                    <td>[[${shoe.name}]]</td>
+                    <td>[[${shoe.brand}]]</td>
+                    <td>[[${shoe.type}]]</td>
+                    <td>[[${shoe.unitPrice}]]</td>
+                    <td>[[${shoe.availableQuantity}]]</td>
+                    <td>
+                        <a th:href="@{'/shoes/edit/'+${shoe.id}}" class="btn btn-secondary mr-4">edit</a>
+                        <a th:href="@{'/shoes/delete/'+${shoe.id}}" class="btn btn-danger">delete</a>
                     </td>
                 </tr>
             </th:block>
@@ -66,6 +67,7 @@
         </table>
     </div>
 </div>
+
 
 <footer class="text-center text-lg-start bg-light text-muted">
 
