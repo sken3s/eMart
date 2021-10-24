@@ -21,6 +21,11 @@ public class MainController {
         return "index";
     }
 
+    @GetMapping("/mainpage")
+    public String showMainPage(){
+        return "mainpage";
+    }
+
     @GetMapping("/register")
     public String showSignUpForm(Model model){
         model.addAttribute("user", new User());
