@@ -26,7 +26,7 @@ public class ProductController {
     @GetMapping("/products/new")
     public String showNewForm(Model model){
         model.addAttribute("product", new Product());
-        model.addAttribute("pageTitle", "Add new Product");
+        model.addAttribute("pageTitle", "Add new Racket");
         return "product_form";
     }
 
@@ -42,7 +42,7 @@ public class ProductController {
         try {
             Product product = service.get(id);
             model.addAttribute("product",product);
-            model.addAttribute("pageTitle", "Update Product ID:"+id);
+            model.addAttribute("pageTitle", "Update Racket ID:"+id);
             return "product_form";
 
         } catch (ProductNotFoundException e) {

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Badminton Rackets</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="https://d1nhio0ox7pgb.cloudfront.net/_img/o_collection_png/green_dark_grey/512x512/plain/badminton_racket.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+      Badminton World
+    </a>
+    <p class="m-2">
+      Welcome <b>[[${#request.userPrincipal.principal.usersName}]]</b>
+    </p>
+    <form th:action="@{/logout}" method="post">
+      <input class="btn btn-info" type="submit" value="Log Out"/>
+    </form>
+  </div>
+</nav>
+
+<div class="container-fluid text-center">
+
+  <div class="row mt-1">
+    <div class="col-8 mt-2">
+      <h2>Badminton Shoes</h2>
+    </div>
+    <div class="col-4">
+      <a class="btn btn-secondary m-2" th:href="@{'/mainpage'}">HomePage</a>
+    </div>
+  </div>
+
+
+  <div>
+    <div class="row m-3 p-5 bg-dark rounded-3">
+
+    <th:block th:each="shoe: ${listShoes}">
+      <div class="card mb-2 mt-2 col-xl-3 col-12 ml-auto mr-auto" >
+<!--        <img src="./data/camera.jpg" class="card-img-top">-->
+        <div class="card-body">
+          <h5 class="card-title">[[${shoe.name}]]</h5>
+          <p class="card-text">[[${shoe.type}]] Badminton Racket</p>
+          <div class="mb-2">
+            <span class="font-bold"><strong>[[${shoe.unitPrice}]] LKR</strong></span>
+            <br>
+            <span th:if="${shoe.availableQuantity == 0}">Out of Stock</span>
+            <span th:if="${shoe.availableQuantity > 0}">Available</span>
+          </div>
+          <div class="card-footer">
+            <div class="row">
+              <div class="col">
+                <button type="button"
+                        class="btn btn-primary btn-sm btn-block"
+                        id="addToCart-1" onclick="addToCart(this)">
+                         ADD TO CART
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </th:block>
+    </div>
+  </div>
+</div>
+
+<footer class="text-center text-lg-start bg-light text-muted">
+
+  <section
+          class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
+  >
+
+    <div class=" d-none d-lg-block">
+      <span>Get connected with us :</span>
+    </div>
+
+    <div>
+      <p>sales@badmintonworld.com | +94 77 592 8309 | 98, Park Road, Colombo-02</p>
+    </div>
+
+  </section>
+
+  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+    © 2021 Copyright:
+    <a class="text-reset fw-bold" >Skenos Peniel</a>
+  </div>
+
+</footer>
+
+
+<script type="text/javascript">
+  function addToCart(item) {
+    if(item.innerHTML=="ADDED"){
+      item.innerHTML = "";
+      item.innerHTML = "ADD TO CART";
+
+    }else{
+      item.innerHTML = "";
+      item.innerHTML = "ADDED";
+
+    }
+
+  }
+</script>
+</body>
+</html>
