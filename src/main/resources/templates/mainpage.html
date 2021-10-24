@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
   <meta charset="UTF-8">
   <title>eMart</title>
@@ -9,6 +10,10 @@
 <div class="container-fluid text-center">
   <h1>Welcome to eMart</h1>
 
+  <div sec:authorize="isAuthenticated()">
+Welcome <span sec:authentication="name"> Username</span>
+    <span sec:authentication="principal.authorities"> Roles</span>
+  </div>
   <div>
     <form th:action="@{/logout}" method="post">
       <p>
@@ -19,8 +24,8 @@
   </div>
 
 
-  <a class="btn btn-primary m-5" th:href="@{/users}">Manage Users</a>
-  <a class="btn btn-info m-5" th:href="@{/products}">Manage Products</a>
+  <a sec:authorize="hasAnyAuthority('ADMIN')" class="btn btn-primary m-5" th:href="@{/users}">Manage Users</a>
+  <a sec:authorize="hasAnyAuthority('ADMIN')" class="btn btn-info m-5" th:href="@{/products}">Manage Products</a>
 
 
 

@@ -44,12 +44,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(authenticationProvider());
     }
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/mainpage","products/*","users/*").authenticated()
-                .anyRequest().permitAll()
+                .antMatchers("/css/**", "/js/**", "/webjars/**").permitAll()
+                .antMatchers("/mainpage").hasAnyAuthority("USER","ADMIN")
+                .antMatchers("products/**").hasAuthority("ADMIN")
+                .antMatchers("users/**").hasAuthority("ADMIN")
+                .anyRequest().authenticated()
                 .and()
                 .formLogin()
                     .usernameParameter("email")
