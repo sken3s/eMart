@@ -26,6 +26,7 @@ Welcome <span sec:authentication="name"> Username</span>
 
   <a sec:authorize="hasAnyAuthority('ADMIN')" class="btn btn-primary m-5" th:href="@{/users}">Manage Users</a>
   <a sec:authorize="hasAnyAuthority('ADMIN')" class="btn btn-info m-5" th:href="@{/products}">Manage Products</a>
+  <a class="btn btn-secondary m-5" th:href="@{/shop}">Badminton Rackets</a>
 
 
 

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Badminton Rackets</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class="container-fluid text-center">
+  <div>
+    <h2>Badminton Rackets</h2>
+  </div>
+  <div>
+    <a class="btn btn-secondary m-5" th:href="@{'/mainpage'}">HomePage</a>
+  </div>
+  <div th:if="${message}" class="alert alert-success text-center">
+    [[${message}]]
+  </div>
+  <div>
+
+    <div class="row">
+
+    <th:block th:each="product: ${listProducts}">
+      <div class="card mb-2 col-3 m-2">
+<!--        <img src="./data/camera.jpg" class="card-img-top">-->
+        <div class="card-body">
+          <h5 class="card-title">[[${product.name}]]</h5>
+          <p class="card-text">[[${product.type}]] Badminton Racket</p>
+          <div class="mb-2">
+            <span class="font-bold"><strong>[[${product.unitPrice}]] LKR</strong></span>
+            <span th:if="${product.availableQuantity == 0}">Out of Stock</span>
+            <span th:if="${product.availableQuantity > 0}">Available</span>
+          </div>
+          <div class="card-footer">
+            <div class="row">
+              <div class="col-md-6 mb-2">
+                    <span class="align-middle glyphicon glyphicon-star"
+                          aria-hidden="true"></span> <span
+                      class="align-middle glyphicon glyphicon-star"
+                      aria-hidden="true"></span> <span
+                      class="align-middle glyphicon glyphicon-star"
+                      aria-hidden="true"></span> <span
+                      class="align-middle glyphicon glyphicon-star"
+                      aria-hidden="true"></span> <span
+                      class="align-middle glyphicon glyphicon-star-empty"
+                      aria-hidden="true"></span>
+              </div>
+              <div class="col-md-6">
+                <button type="button"
+                        class="btn btn-primary btn-sm btn-block"
+                        id="addToCart-1" onclick="addToCart(this)">
+                        <span class="glyphicon glyphicon-shopping-cart"
+                              aria-hidden="true"></span> ADD TO CART
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </th:block>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  function addToCart(item) {
+    if(item.innerHTML=="Added"){
+      item.innerHTML = "";
+      item.innerHTML = "Add to Cart";
+
+    }else{
+      item.innerHTML = "";
+      item.innerHTML = "Added";
+
+    }
+
+  }
+</script>
+</body>
+</html>
